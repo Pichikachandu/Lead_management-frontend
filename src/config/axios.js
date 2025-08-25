@@ -1,7 +1,12 @@
 import axios from 'axios';
 
 // Environment-based base URL
-const baseURL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080';
+// In production, default to the deployed backend if the env var is missing
+const baseURL = process.env.REACT_APP_API_BASE_URL || (
+  process.env.NODE_ENV === 'production'
+    ? 'https://lead-management-backend-u62v.onrender.com'
+    : 'http://localhost:8080'
+);
 
 // Create axios instance with default config
 const api = axios.create({
