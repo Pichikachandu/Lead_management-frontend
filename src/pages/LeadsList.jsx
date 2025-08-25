@@ -35,6 +35,9 @@ const LeadsList = () => {
     totalPages: 1
   });
 
+  // Destructure primitive pagination values to use in hooks' deps
+  const { page, limit } = pagination;
+
   // Filters state
   const [filters, setFilters] = useState({
     search: '',
@@ -110,7 +113,6 @@ const LeadsList = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const { page, limit } = pagination;
       const params = new URLSearchParams();
       
       // Always add pagination
@@ -194,8 +196,8 @@ const LeadsList = () => {
   }, [
     isAuthenticated,
     navigate,
-    pagination.page,
-    pagination.limit,
+    page,
+    limit,
     filters.search,
     filters.status,
     filters.source,
