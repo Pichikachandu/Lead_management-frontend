@@ -12,6 +12,8 @@ const baseURL = process.env.REACT_APP_API_BASE_URL || (
 const api = axios.create({
   baseURL,
   withCredentials: true, // Important for sending cookies
+  // Allow for Render cold starts and network latency in production
+  timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',

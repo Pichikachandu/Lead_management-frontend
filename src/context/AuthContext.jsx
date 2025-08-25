@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await api.get('/api/auth/me', {
         // Add timeout to prevent hanging
-        timeout: 3000,
+        timeout: 12000,
         // Don't show loading spinners for this request
         headers: { 'X-Requested-With': 'XMLHttpRequest' }
       });
@@ -124,7 +124,7 @@ export const AuthProvider = ({ children }) => {
         password: formData.password
       }, {
         // Add timeout to prevent hanging
-        timeout: 5000
+        timeout: 15000
       });
       
       if (response.data.success) {
